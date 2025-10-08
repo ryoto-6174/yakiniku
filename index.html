@@ -63,6 +63,78 @@
     .notice{padding:10px;border-radius:8px;background:#fff8ec;border:1px solid rgba(0,0,0,0.03);color:var(--muted)}
     a.inline{color:var(--accent);text-decoration:none}
     html{scroll-behavior:smooth}
+    /* スマホで横スクロールが起きないように全体を調整 */
+body, html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* 横スクロールするギャラリー以外では、flex項目がはみ出さないようにする */
+section, div, img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ギャラリー部分だけスクロールを許可（他の要素ははみ出さない） */
+.menu-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 12px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.menu-gallery img {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  scroll-snap-align: start;
+}
+    /* 横スクロールを完全に防止 */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* スマホサイズでレイアウト崩れを防ぐ */
+@media (max-width: 720px) {
+  .wrap {
+    padding: 8px;
+  }
+  .grid {
+    display: block;
+  }
+  .hero {
+    height: 40vh; /* 上の写真を少し小さく */
+    background-position: center center;
+    background-size: cover;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .card, .menu-gallery, img, iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* メニュー写真が画面幅を超えないように */
+  .menu-gallery {
+    overflow-x: auto;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .menu-gallery img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -249,3 +321,4 @@
   </script>
 </body>
 </html>
+
