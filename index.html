@@ -36,10 +36,10 @@
     nav.topnav a.cta{background:var(--accent);color:#fff;border-color:rgba(0,0,0,0.06)}
     @media(max-width:720px){.wrap{padding:16px}.logo{width:56px;height:56px}.brand-info h1{font-size:1.1rem}}
     
- /* --- ヒーローセクション全体調整 --- */
+/* --- ヒーローセクション --- */
 .hero {
   position: relative;
-  background-image: url('./yakiniku main image.jpg'); /* ←ここはあなたの画像パス */
+  background-image: url('./yakiniku main image.jpg'); /* ←背景写真パス */
   background-size: cover;
   background-position: center;
   color: white;
@@ -51,25 +51,45 @@
   min-height: 300px;
 }
 
-/* スマホ調整 */
+/* テキスト部分 */
+.hero-content {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.4em;
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* --- スマホ用調整 --- */
 @media (max-width: 720px) {
   .hero {
-    padding: 30px 16px;
-    min-height: 200px;
+    padding: 24px 12px;
+    min-height: 180px;
   }
 
   .hero-content h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.4em;
+    font-size: 1.2rem; /* ← 前よりさらに小さく */
+    margin-bottom: 0.3em;
   }
 
   .hero-content p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    max-width: 90%;
-    margin: 0 auto;
+    font-size: 0.8rem; /* ← 一段階小さく */
+    line-height: 1.4;
+    max-width: 92%;
   }
 }
+
 .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
     @media(max-width:980px){.grid{grid-template-columns:1fr}}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03)}
@@ -351,6 +371,7 @@ html, body {
   </script>
 </body>
 </html>
+
 
 
 
