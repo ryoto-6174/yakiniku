@@ -266,24 +266,18 @@ html, body {
         </section>
 
         <!-- ここからメニュー写真 横スクロール -->
-        <section id="photos" class="card" aria-label="メニュー写真">
-          <h2>メニュー写真</h2>
-          <div style="
-            display:flex;
-            overflow-x:auto;
-            gap:12px;
-            padding:12px 0;
-            scroll-snap-type:x mandatory;
-            -webkit-overflow-scrolling:touch;
-          ">
-            <img src="./gyutan.webp" alt="牛タン" style="flex:0 0 auto;width:150px;height:150px;object-fit:cover;border-radius:8px;scroll-snap-align:start;">
-            <img src="./karubi.webp" alt="カルビ" style="flex:0 0 auto;width:150px;height:150px;object-fit:cover;border-radius:8px;scroll-snap-align:start;">
-            <img src="./bibinnba.webp" alt="石焼きビビンバ" style="flex:0 0 auto;width:150px;height:150px;object-fit:cover;border-radius:8px;scroll-snap-align:start;">
-            <img src="./harami.webp" alt="ハラミ" style="flex:0 0 auto;width:150px;height:150px;object-fit:cover;border-radius:8px;scroll-snap-align:start;">
-            <img src="./reimenn.webp" alt="冷麺" style="flex:0 0 auto;width:150px;height:150px;object-fit:cover;border-radius:8px;scroll-snap-align:start;">
-          </div>
-        </section>
+<section id="photos" class="card" aria-label="メニュー写真">
+  <h2>メニュー写真</h2>
+  <div class="menu-gallery">
+    <img src="./gyutan.webp" alt="牛タン">
+    <img src="./karubi.webp" alt="カルビ">
+    <img src="./bibinnba.webp" alt="石焼きビビンバ">
+    <img src="./harami.webp" alt="ハラミ">
+    <img src="./reimenn.webp" alt="冷麺">
+  </div>
+</section>
 
+        
         <section id="faq" class="card" aria-labelledby="faq-title">
           <h2 id="faq-title">よくある質問</h2>
           <dl class="faq">
@@ -409,6 +403,7 @@ html, body {
 </script>
   </body>
 </html>
+
 
 
 
