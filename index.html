@@ -344,25 +344,64 @@ html, body {
   </div>
 
   <script>
-    (function(){
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.style.transition="opacity 900ms ease, transform 900ms ease";
-            e.target.style.opacity=1;
-            e.target.style.transform="translateY(0)";
-            io.unobserve(e.target);
-          }
-        });
-      },{threshold:0.12});
+  const galleryImgs = Array.from(document.querySelectorAll('.menu-gallery img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  let currentIndex = 0;
 
-      document.querySelectorAll('.card, .hero .content, .photo, .menu-item').forEach(el=>{
-        el.style.opacity=0;
-        el.style.transform="translateY(18px)";
-        io.observe(el);
-      });
-    })();
-  </script>
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImgs[currentIndex].src;
+    lightbox.style.display = 'flex';
+  }
+
+  // 画像クリックでライトボックス表示
+  galleryImgs.forEach((img, i) => {
+    img.addEventListener('click', () => showImage(i));
+  });
+
+  // クリックで閉じる
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightboxImg) {
+      lightbox.style.display = 'none';
+    }
+  });
+
+  // キーボード左右で切替
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % galleryImgs.length;
+        lightboxImg.src = galleryImgs[currentIndex].src;
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + galleryImgs.length) % galleryImgs.length;
+        lightboxImg.src = galleryImgs[currentIndex].src;
+      } else if (e.key === 'Escape') {
+        lightbox.style.display = 'none';
+      }
+    }
+  });
+
+  // スマホ向けタッチスワイプ
+  let startX = 0;
+  lightboxImg.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  lightboxImg.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if (Math.abs(diff) > 40) { // スワイプ判定
+      if (diff < 0) { // 左スワイプ → 次
+        currentIndex = (currentIndex + 1) % galleryImgs.length;
+      } else { // 右スワイプ → 前
+        currentIndex = (currentIndex - 1 + galleryImgs.length) % galleryImgs.length;
+      }
+      lightboxImg.src = galleryImgs[currentIndex].src;
+    }
+  });
+</script>
+
 
   <!-- ====== 画像拡大用のオーバーレイ ====== -->
 <div id="lightbox" style="
@@ -403,6 +442,7 @@ html, body {
 </script>
   </body>
 </html>
+
 
 
 
