@@ -184,7 +184,7 @@ html, body {
 
   <section class="hero">
   <div class="hero-images">
-    <img src="yakiniku main image.jpg" class="active" alt="炭火焼肉">
+    <img src="yakiniku_main_image.jpg" class="active" alt="炭火焼肉">
     <img src="yakiniku_hero2.webp" alt="炭火焼肉2">
     <img src="yakiniku_hero3.webp" alt="炭火焼肉3">
   </div>
@@ -350,25 +350,26 @@ html, body {
   const lightboxImg = document.getElementById('lightbox-img');
   let currentIndex = 0;
 
+  // 画像を表示
   function showImage(index) {
     currentIndex = index;
     lightboxImg.src = galleryImgs[currentIndex].src;
     lightbox.style.display = 'flex';
   }
 
-  // 画像クリックでライトボックス表示
+  // ギャラリー画像クリックで拡大
   galleryImgs.forEach((img, i) => {
     img.addEventListener('click', () => showImage(i));
   });
 
-  // クリックで閉じる
+  // ライトボックスをクリックで閉じる
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target === lightboxImg) {
+    if (e.target === lightbox) {
       lightbox.style.display = 'none';
     }
   });
 
-  // キーボード左右で切替
+  // キーボード操作
   document.addEventListener('keydown', (e) => {
     if (lightbox.style.display === 'flex') {
       if (e.key === 'ArrowRight') {
@@ -383,7 +384,7 @@ html, body {
     }
   });
 
-  // スマホ向けタッチスワイプ
+  // スマホ向けスワイプ
   let startX = 0;
   lightboxImg.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
@@ -392,10 +393,10 @@ html, body {
   lightboxImg.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     const diff = endX - startX;
-    if (Math.abs(diff) > 40) { // スワイプ判定
-      if (diff < 0) { // 左スワイプ → 次
+    if (Math.abs(diff) > 40) {
+      if (diff < 0) {
         currentIndex = (currentIndex + 1) % galleryImgs.length;
-      } else { // 右スワイプ → 前
+      } else {
         currentIndex = (currentIndex - 1 + galleryImgs.length) % galleryImgs.length;
       }
       lightboxImg.src = galleryImgs[currentIndex].src;
@@ -403,18 +404,24 @@ html, body {
   });
 </script>
 
-  <script>
-  const heroImages = document.querySelectorAll('.hero-images img');
-  let currentIndex = 0;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroImages = document.querySelectorAll('.hero-images img');
+    if (heroImages.length === 0) return; // 画像がない場合は終了
 
-  setInterval(() => {
-    heroImages[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + 1) % heroImages.length;
-    heroImages[currentIndex].classList.add('active');
-  }, 5000); // 5秒ごとに切り替え
+    let currentHeroIndex = 0;
+    heroImages[currentHeroIndex].classList.add('active'); // 最初の画像を表示
+
+    setInterval(() => {
+      heroImages[currentHeroIndex].classList.remove('active');
+      currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+      heroImages[currentHeroIndex].classList.add('active');
+    }, 5000); // 5秒ごとに切り替え
+  });
 </script>
 </body>
 </html>
+
 
 
 
