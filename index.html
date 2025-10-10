@@ -206,7 +206,7 @@ html, body {
     </nav>
 
     <section class="hero" aria-hidden="false">
-      <div class="content">
+      <div class="hero-content">
         <h2>炭火の香りに誘われて、今日ものんびり。<br>家族で、仲間で、ふらっと寄れる焼き肉屋です。</h2>
         <p>厚切り牛タン、じゅわっとハラミ、定番カルビ。シメは熱々の石焼ビビンバか冷麺でどうぞ。</p>
       </div>
@@ -424,24 +424,10 @@ html, body {
   ">
 </div>
 
-<script>
-  // 全てのメニュー画像にクリックイベントを追加
-  document.querySelectorAll('.menu-gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src;
-      lightbox.style.display = 'flex';
-    });
-  });
 
-  // オーバーレイをクリックしたら閉じる
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
-  });
-</script>
   </body>
 </html>
+
 
 
 
