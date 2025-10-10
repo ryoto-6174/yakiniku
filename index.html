@@ -205,12 +205,71 @@ html, body {
       <a href="#reserve" class="cta">予約する</a>
     </nav>
 
-    <section class="hero" aria-hidden="false">
-      <div class="hero-content">
-        <h2>炭火の香りに誘われて、今日ものんびり。<br>家族で、仲間で、ふらっと寄れる焼き肉屋です。</h2>
-        <p>厚切り牛タン、じゅわっとハラミ、定番カルビ。シメは熱々の石焼ビビンバか冷麺でどうぞ。</p>
-      </div>
-    </section>
+   <section class="hero" aria-hidden="false">
+  <div class="hero-content">
+    <h2>炭火の香りに誘われて、今日ものんびり。<br>家族で、仲間で、ふらっと寄れる焼き肉屋です。</h2>
+    <p>厚切り牛タン、じゅわっとハラミ、定番カルビ。シメは熱々の石焼ビビンバか冷麺でどうぞ。</p>
+  </div>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  background-image: url('./yakiniku main image.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 300px;
+}
+
+/* ← hero全体に暗めのフィルターを追加 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  background: transparent; /* ← 背景を透明に */
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.hero-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.4em;
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 24px 12px;
+    min-height: 180px;
+  }
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+}
+</style>
+
 
     <div class="grid">
       <main>
@@ -427,6 +486,7 @@ html, body {
 
   </body>
 </html>
+
 
 
 
