@@ -51,10 +51,12 @@
   object-fit: cover;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  z-index: 0;
 }
 
 .hero-images img.active {
   opacity: 1;
+  z-index: 1;
 }
 
 /* スマホ対応 */
@@ -416,11 +418,12 @@ html, body {
       heroImages[currentHeroIndex].classList.remove('active');
       currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
       heroImages[currentHeroIndex].classList.add('active');
-    }, 5000); // 5秒ごとに切り替え
+    }, 4000); // 4秒ごとに切り替え
   });
 </script>
 </body>
 </html>
+
 
 
 
